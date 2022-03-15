@@ -18,11 +18,8 @@ int main()
   pop_back(&s);
   pop_back(&s);
   pop_back(&s);
-  pop_back(&s);
-  pop_back(&s);
   print(&s);
 
-  pop_front(&s);
   pop_front(&s);
   pop_front(&s);
   pop_front(&s);
