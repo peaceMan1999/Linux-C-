@@ -17,11 +17,11 @@ extern void pop_back(SList** ps);
 extern void push_front(SList** ps, SLDataType data);
 extern void pop_front(SList** ps);
 //查改
-extern void find();
-extern void revise();
+extern SList* find(SList* ps, SLDataType data);
+extern void revise(SList* ps, SLDataType data);
 //插入删除
-extern void insert();
-extern void erase();
+extern void insert(SList** ps, SList* pos, SLDataType data);
+extern void erase(SList** ps, SList* pos);
 //打印
 extern void print(SList* ps);
 //析构

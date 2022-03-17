@@ -76,12 +76,85 @@ void pop_front(SList** ps)
     *ps = end;
   }
 }
+
 //查改
-extern void find();
-extern void revise();
+SList* find(SList* ps, SLDataType data)
+{
+  if (ps == NULL)
+    return NULL;
+  SList* end = ps;
+  while (end != NULL)
+  {
+    if (end->data == data)
+      return end;
+    end = end->next;
+  }
+  return NULL;
+}
+
+void revise(SList* pos, SLDataType data)
+{
+  if (pos == NULL)
+    return;
+  pos->data = data;
+
+}
 //插入删除
-extern void insert();
-extern void erase();
+void insert(SList** ps, SList* pos, SLDataType data)
+{
+  if (pos == NULL)
+    return;
+  SList* new = buy(data);
+  //first
+  if (pos == *ps)
+  {
+    new->next = *ps; 
+    *ps = new;
+  }
+  //second
+  else
+  {
+    SList* front = NULL;
+    SList* end = *ps;
+    while (end != pos)
+    {
+      front = end;
+      end = end->next;
+    }
+    front->next = new;
+    new->next = pos;
+  }
+
+
+}
+
+void erase(SList** ps, SList* pos)
+{
+  if (pos == NULL)
+    return;
+  //first
+  if (pos == *ps)
+  {
+    SList* end = (*ps)->next;
+    free(*ps);
+    *ps = end;
+  }
+  //second
+  else
+  {
+    SList* front = NULL;
+    SList* end = *ps;
+    while (end != pos)
+    {
+      front = end;
+      end = end->next;
+    }
+    front->next = pos->next;
+    free(pos);
+    pos = NULL;
+  }
+}
+
 //打印
 void print(SList* ps)
 {
